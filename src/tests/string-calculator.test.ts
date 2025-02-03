@@ -1,0 +1,9 @@
+import Calculator from '../string-calculator';
+import {describe, expect, it} from "vitest";
+
+describe('String Calculator', () => {
+    it("should return 0 for an empty string", () => {
+        const calculator = new Calculator();
+        expect(calculator.add("")).toBe(0);
+    });
+});
