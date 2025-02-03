@@ -16,4 +16,9 @@ describe('String Calculator', () => {
         const calculator = new Calculator();
         expect(calculator.add("1,2")).toBe(3);
     });
+
+    it("should return the sum for multiple numbers separated by a comma", () => {
+        const calculator = new Calculator();
+        expect(calculator.add("1,2,3")).toBe(6);
+    });
 });
