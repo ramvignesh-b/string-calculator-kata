@@ -11,7 +11,7 @@ export default class Calculator {
         if (nums.length === 1) {
             sum = parseInt(nums[0]);
         } else {
-            sum = parseInt(nums[0]) + parseInt(nums[1]);
+            sum = nums.reduce((acc, num) => acc + parseInt(num), 0);
         }
         return sum;
     }
