@@ -1,6 +1,9 @@
 export default class Calculator {
 
     add(input: string) {
-        return 0;
+        if (input === "") {
+            return 0;
+        }
+        return parseInt(input);
     }
 }
