@@ -1,10 +1,18 @@
 export default class Calculator {
 
     add(input: string) {
-        const nums = input.split(",");
-        if (nums.length > 1) {
-            return parseInt(nums[0]) + parseInt(nums[1]);
+        if (input === "") {
+            return 0;
         }
-        return input === "" ? 0 : parseInt(input);
+
+        const nums = input.split(",");
+        let sum = 0;
+
+        if (nums.length === 1) {
+            sum = parseInt(nums[0]);
+        } else {
+            sum = parseInt(nums[0]) + parseInt(nums[1]);
+        }
+        return sum;
     }
 }
