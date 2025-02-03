@@ -6,4 +6,9 @@ describe('String Calculator', () => {
         const calculator = new Calculator();
         expect(calculator.add("")).toBe(0);
     });
+
+    it("should return the number for a single number", () => {
+        const calculator = new Calculator();
+        expect(calculator.add("1")).toBe(1);
+    });
 });
