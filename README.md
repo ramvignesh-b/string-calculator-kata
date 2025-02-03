@@ -74,3 +74,4 @@ Handle multiple separators with any character length.
 Example:
 
 Add("//[foo][bar]\n1foo2bar3") // 6
+
