@@ -17,6 +17,13 @@ export default class Calculator {
     }
 
     private parseNumbers(input: string) {
-        return input.replace('\n', ',').split(",");
+        let _input = input;
+        let customDelimiter = '';
+        if (input.startsWith("//")) {
+            customDelimiter = input.charAt(2);
+            _input = input.replace(`//${customDelimiter}\n`, '').replace(customDelimiter, ',');
+        }
+        _input = _input.replace('\n', ',');
+        return _input.split(',');
     }
 }
