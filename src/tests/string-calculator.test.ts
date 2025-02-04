@@ -46,5 +46,10 @@ describe('String Calculator', () => {
         const calculator = new Calculator();
         expect(calculator.add("//[***]\n1***2***3")).toBe(6);
     });
+
+    it('should handle multiple single length separators', () => {
+        const calculator = new Calculator();
+        expect(calculator.add("//[*][%]\n1*2%3")).toBe(6);
+    });
 });
 
