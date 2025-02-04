@@ -6,6 +6,12 @@ export default class Calculator {
         }
 
         const nums = this.parseNumbers(input);
+
+        if (nums.some(nums => parseInt(nums) < 0)) {
+            const negativeNumbers = nums.filter(nums => parseInt(nums) < 0);
+            throw new Error(`negatives not allowed: ${negativeNumbers.join(", ")}`);
+        }
+
         let sum;
 
         if (nums.length === 1) {
