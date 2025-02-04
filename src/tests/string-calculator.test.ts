@@ -21,4 +21,10 @@ describe('String Calculator', () => {
         const calculator = new Calculator();
         expect(calculator.add("1,2,3")).toBe(6);
     });
+
+    it('should handle newlines as a separator', () => {
+        const calculator = new Calculator();
+        expect(calculator.add("1\n2,3")).toBe(6);
+    });
 });
+
