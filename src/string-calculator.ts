@@ -39,13 +39,18 @@ export default class Calculator {
     private getDelimiter(_input: string) {
         let delimiter = ',';
         if (_input.startsWith("//[")) {
-            const delimiterMatches = _input.match(/\[(.*?)]/g);
-            delimiter = _input.split('\n')[0].substring(3, _input.split('\n')[0].length - 1);
-            if (delimiterMatches) {
-                delimiter = delimiterMatches.map(delimiter => delimiter.substring(1, delimiter.length - 1)).join('|');
-            }
+            delimiter = this.concatMultiDelimiters(_input);
         } else if (_input.startsWith("//")) {
             delimiter = _input.charAt(2);
+        }
+        return delimiter;
+    }
+
+    private concatMultiDelimiters(_input: string) {
+        const delimiterMatches = _input.match(/\[(.*?)]/g);
+        let delimiter = _input.split('\n')[0].substring(3, _input.split('\n')[0].length - 1);
+        if (delimiterMatches) {
+            delimiter = delimiterMatches.map(delimiter => delimiter.substring(1, delimiter.length - 1)).join('|');
         }
         return delimiter;
     }
