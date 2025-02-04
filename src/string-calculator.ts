@@ -5,7 +5,7 @@ export default class Calculator {
             return 0;
         }
 
-        const nums = input.split(",");
+        const nums = input.replace('\n', ',').split(",");
         let sum = 0;
 
         if (nums.length === 1) {
