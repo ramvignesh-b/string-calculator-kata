@@ -5,7 +5,7 @@ export default class Calculator {
             return 0;
         }
 
-        const nums = this.parseNumbers(input);
+        const nums = this.parseNumbers(input).filter(num => num <= 1000);
         this.validateNumbers(nums);
 
         let sum;
