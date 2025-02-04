@@ -41,5 +41,10 @@ describe('String Calculator', () => {
         const calculator = new Calculator();
         expect(calculator.add("2,1001,3")).toBe(5);
     });
+
+    it('should handle arbitrary length of separators', () => {
+        const calculator = new Calculator();
+        expect(calculator.add("//[***]\n1***2***3")).toBe(6);
+    });
 });
 
