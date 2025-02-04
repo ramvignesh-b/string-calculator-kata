@@ -6,27 +6,30 @@ export default class Calculator {
         }
 
         const nums = this.parseNumbers(input);
-
-        if (nums.some(nums => parseInt(nums) < 0)) {
-            const negativeNumbers = nums.filter(nums => parseInt(nums) < 0);
-            throw new Error(`negatives not allowed: ${negativeNumbers.join(", ")}`);
-        }
+        this.validateNumbers(nums);
 
         let sum;
 
         if (nums.length === 1) {
-            sum = parseInt(nums[0]);
+            sum = nums[0];
         } else {
-            sum = nums.reduce((acc, num) => acc + parseInt(num), 0);
+            sum = nums.reduce((acc, num) => acc + num, 0);
         }
         return sum;
     }
 
-    private parseNumbers(input: string) {
+    private validateNumbers(nums: number[]) {
+        if (nums.some(num => num < 0)) {
+            const negativeNumbers = nums.filter(nums => nums < 0);
+            throw new Error(`negatives not allowed: ${negativeNumbers.join(", ")}`);
+        }
+    }
+
+    private parseNumbers(input: string): number[] {
         let _input = input;
         let customDelimiter = this.getDelimiter(_input);
         _input = _input.replace(new RegExp(`[//${customDelimiter}\n]`, 'g'), ',');
-        return _input.split(',').filter(Number);
+        return _input.split(',').filter(Number).map(x => Number(x));
     }
 
     private getDelimiter(_input: string) {
