@@ -18,12 +18,16 @@ export default class Calculator {
 
     private parseNumbers(input: string) {
         let _input = input;
-        let customDelimiter = '';
-        if (input.startsWith("//")) {
-            customDelimiter = input.charAt(2);
-            _input = input.replace(`//${customDelimiter}\n`, '').replace(customDelimiter, ',');
+        let customDelimiter = this.getDelimiter(_input);
+        _input = _input.replace(new RegExp(`[//${customDelimiter}\n]`, 'g'), ',');
+        return _input.split(',').filter(Number);
+    }
+
+    private getDelimiter(_input: string) {
+        let delimiter = ',';
+        if (_input.startsWith("//")) {
+            delimiter = _input.charAt(2);
         }
-        _input = _input.replace('\n', ',');
-        return _input.split(',');
+        return delimiter;
     }
 }
